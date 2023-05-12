@@ -23,15 +23,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: false, // remove createdAt and updatedAt
-      underscored: true,
+      underscored: true, // use camelCase
       tableName: 'users',
     }
   );
-  User.associate = (models) => {
-    User.hasMany(models.BlogPost, {
-      foreignKey: 'user_id',
-      as: 'blogPosts',
-    });
-  }
+  // User.associate = (models) => {
+  //   User.hasMany(models.BlogPost, {
+  //     foreignKey: 'user_id',
+  //     as: 'blogPosts',
+  //   });
+  // }
   return User;
 };
