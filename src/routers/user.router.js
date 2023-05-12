@@ -18,6 +18,12 @@ router.post(
 );
 
 router.get(
+  '/:id',
+  authMiddleware,
+  userController.findUserById,
+);
+
+router.get(
   '/',
   authMiddleware,
   userController.findAllUsers,
