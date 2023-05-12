@@ -37,7 +37,14 @@ const createUser = async (req, res) => {
   }
 };
 
+const findAllUsers = async (_req, res) => {
+  const users = await userService.findAllUsers();
+
+  return res.status(200).json(users);
+};
+
 module.exports = {
   loginUser,
   createUser,
+  findAllUsers,
 };

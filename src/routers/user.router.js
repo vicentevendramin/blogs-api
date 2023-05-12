@@ -1,5 +1,6 @@
 const express = require('express');
 const { userController } = require('../controllers');
+const { authMiddleware } = require('../middlewares/auth.middleware');
 const {
   validateName,
   validateEmail,
@@ -14,6 +15,12 @@ router.post(
   validateEmail,
   validatePassword,
   userController.createUser,
+);
+
+router.get(
+  '/',
+  authMiddleware,
+  userController.findAllUsers,
 );
 
 module.exports = router;
