@@ -3,6 +3,7 @@ const {
   loginRouter,
   userRouter,
   categoryRouter,
+  postRouter,
 } = require('./routers');
 
 // ...
@@ -21,6 +22,8 @@ app.use('/login', loginRouter);
 app.use('/user', userRouter);
 
 app.use('/categories', categoryRouter);
+
+app.use('/post', postRouter);
 
 // ...
 
