@@ -1,4 +1,4 @@
-const { categoryService } = require('../services');
+const { categoryService, postService, userService } = require('../services');
 
 const validateRequiredFields = (req, res, next) => {
   const { title, content, categoryIds } = req.body;
@@ -27,7 +27,32 @@ const validateCategoryId = async (req, res, next) => {
   next();
 };
 
+const validatePostOwner = async (req, res, next) => {
+  const { id } = req.params;
+  const post = await postService.findPostById(id);
+
+  const { id: userId } = await userService.findUserByEmail(req.user.email);
+
+  if (post && post.userId !== userId) {
+    return res.status(401).json({ message: 'Unauthorized user' });
+  }
+
+  next();
+};
+
+const validateFieldsToUpdate = async (req, res, next) => {
+  const { title, content } = req.body;
+
+  if (!title || !content) {
+    return res.status(400).json({ message: 'Some required fields are missing' });
+  }
+
+  next();
+};
+
 module.exports = {
   validateRequiredFields,
   validateCategoryId,
+  validatePostOwner,
+  validateFieldsToUpdate,
 };

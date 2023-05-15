@@ -4,6 +4,8 @@ const { postController } = require('../controllers');
 const {
   validateRequiredFields,
   validateCategoryId,
+  validatePostOwner,
+  validateFieldsToUpdate,
 } = require('../middlewares/validatePost.middleware');
 
 const router = express.Router();
@@ -26,6 +28,14 @@ router.get(
   '/',
   authMiddleware,
   postController.getPosts,
+);
+
+router.put(
+  '/:id',
+  authMiddleware,
+  validatePostOwner,
+  validateFieldsToUpdate,
+  postController.updatePost,
 );
 
 module.exports = router;

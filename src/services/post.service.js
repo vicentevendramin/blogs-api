@@ -47,13 +47,22 @@ const findPostById = async (id) => {
     }],
   });
 
-  if (!post) return { type: 'NOT_FOUND', message: 'Post does not exist' };
+  return post;
+};
 
-  return { type: null, message: post };
+const updatePost = async (id, post) => {
+  const { title, content } = post;
+
+  await BlogPost.update({ title, content }, { where: { id } });
+
+  const getPost = await findPostById(id);
+
+  return getPost;
 };
 
 module.exports = {
   insertPost,
   getPosts,
   findPostById,
+  updatePost,
 };

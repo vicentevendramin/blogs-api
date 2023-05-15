@@ -30,11 +30,24 @@ const findPostById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { type, message } = await postService.findPostById(id);
+    const post = await postService.findPostById(id);
 
-    if (type) return res.status(404).json({ message });
+    if (!post) return res.status(404).json({ message: 'Post does not exist' });
 
-    return res.status(200).json(message);
+    return res.status(200).json(post);
+  } catch (error) {
+    return error;
+  }
+};
+
+const updatePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+
+    const post = await postService.updatePost(id, { title, content });
+    
+    return res.status(200).json(post);
   } catch (error) {
     return error;
   }
@@ -44,4 +57,5 @@ module.exports = {
   insertPost,
   getPosts,
   findPostById,
+  updatePost,
 };
