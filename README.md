@@ -2,8 +2,6 @@
 
 Este projeto é uma API REST de um Blog, sendo possivel realizar cadastro, atualizar dados e consultar usuários e posts.
 
-<br />
-
 ### 💻 Tecnologias utilizadas:
 
 - JavaScript
