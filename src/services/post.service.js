@@ -60,9 +60,18 @@ const updatePost = async (id, post) => {
   return getPost;
 };
 
+const deletePost = async (id) => {
+  const post = await findPostById(id);
+
+  if (!post) return { type: 'NOT_FOUND', message: 'Post does not exist' };
+
+  return BlogPost.destroy({ where: { id } });
+};
+
 module.exports = {
   insertPost,
   getPosts,
   findPostById,
   updatePost,
+  deletePost,
 };
