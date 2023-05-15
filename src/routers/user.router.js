@@ -9,6 +9,12 @@ const {
 
 const router = express.Router();
 
+router.delete(
+  '/me',
+  authMiddleware,
+  userController.deleteUser,
+);
+
 router.post(
   '/',
   validateName,

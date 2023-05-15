@@ -15,10 +15,14 @@ const findUserById = async (id) =>
 const findUserByEmail = async (email) =>
   User.findOne({ where: { email } });
 
+const deleteUser = async (id) =>
+  User.destroy({ where: { id } });
+
 module.exports = {
   findUser,
   createUser,
   findAllUsers,
   findUserById,
   findUserByEmail,
+  deleteUser,
 };

@@ -38,19 +38,41 @@ const createUser = async (req, res) => {
 };
 
 const findAllUsers = async (_req, res) => {
-  const users = await userService.findAllUsers();
+  try {
+    const users = await userService.findAllUsers();
 
-  return res.status(200).json(users);
+    return res.status(200).json(users);
+  } catch (error) {
+    return error;
+  }
 };
 
 const findUserById = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  const user = await userService.findUserById(id);
+    const user = await userService.findUserById(id);
 
-  if (!user) return res.status(404).json({ message: 'User does not exist' });
+    if (!user) return res.status(404).json({ message: 'User does not exist' });
 
-  return res.status(200).json(user);
+    return res.status(200).json(user);
+  } catch (error) {
+    return error;
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const { email } = req.user;
+
+    const { id } = await userService.findUserByEmail(email);
+
+    await userService.deleteUser(id);
+
+    return res.status(204).end();
+  } catch (error) {
+    return error;
+  }
 };
 
 module.exports = {
@@ -58,4 +80,5 @@ module.exports = {
   createUser,
   findAllUsers,
   findUserById,
+  deleteUser,
 };
