@@ -19,6 +19,12 @@ router.post(
 );
 
 router.get(
+  '/search',
+  authMiddleware,
+  postController.getPostsByQuery,
+);
+
+router.get(
   '/:id',
   authMiddleware,
   postController.findPostById,
