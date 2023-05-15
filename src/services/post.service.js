@@ -15,11 +15,8 @@ const insertPost = async (post) => {
   return { type: null, message: newPost };
 };
 
-const getPosts = async (id = null) => {
-  const condition = id && { id };
-
+const getPosts = async () => {
   const posts = await BlogPost.findAll({
-    where: condition,
     include: [{
       model: User,
       as: 'user',
@@ -35,7 +32,28 @@ const getPosts = async (id = null) => {
   return posts; 
 };
 
+const findPostById = async (id) => {
+  const post = await BlogPost.findOne({
+    where: { id },
+    include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: ['password'] },
+    },
+    {
+      model: Category,
+      as: 'categories',
+      through: { attributes: [] },
+    }],
+  });
+
+  if (!post) return { type: 'NOT_FOUND', message: 'Post does not exist' };
+
+  return { type: null, message: post };
+};
+
 module.exports = {
   insertPost,
   getPosts,
+  findPostById,
 };

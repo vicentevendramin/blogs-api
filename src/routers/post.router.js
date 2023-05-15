@@ -17,6 +17,12 @@ router.post(
 );
 
 router.get(
+  '/:id',
+  authMiddleware,
+  postController.findPostById,
+);
+
+router.get(
   '/',
   authMiddleware,
   postController.getPosts,
