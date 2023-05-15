@@ -1,6 +1,6 @@
 # Blogs API Project
 
-Este projeto é uma API REST de um Blog, sendo possivel realizar cadastro, atualizar dados e consultar usuários e posts.
+Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir conteúdo em um Blog. É possivel realizar cadastro, atualizar dados e consultar usuários e posts.
 
 ### 💻 Tecnologias utilizadas:
 
@@ -8,6 +8,7 @@ Este projeto é uma API REST de um Blog, sendo possivel realizar cadastro, atual
 - NodeJS
 - Express
 - Sequelize
+- JWT
 - MySQL
 - Docker
 
