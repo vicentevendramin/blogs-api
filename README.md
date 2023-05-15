@@ -4,13 +4,14 @@ Este projeto é uma API REST de um Blog, sendo possivel realizar cadastro, atual
 
 <br />
 
-Tecnologias utilizadas:
+### 💻 Tecnologias utilizadas:
 
 - JavaScript
 - NodeJS
 - Express
 - Sequelize
 - MySQL
+- Docker
 
 ---
 
