@@ -1,6 +1,6 @@
 # Blogs API Project
 
-Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir conteúdo em um Blog. É possivel realizar cadastro, atualizar dados e consultar usuários e posts.
+Neste projeto foi desenvolvido um Banco de Dados e uma API REST. Utilizado a metodologia CRUD (Create, Read, Update e Delete), para produzir conteúdo em um Blog. É possivel cadastrar, visualizar, pesquisar, editar e excluir informações.
 
 ### 💻 Tecnologias utilizadas:
 
@@ -15,7 +15,7 @@ Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir c
 ---
 
 <details>
-  <summary  id="diagrama"><strong>Diagrama ER</strong></summary>
+  <summary><strong>Diagrama ER</strong></summary>
 
   #### Diagrama de Entidade-Relacionamento
 
@@ -24,7 +24,7 @@ Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir c
 </details>
 
 <details>
-  <summary  id="diagrama"><strong>Entidades</strong></summary>
+  <summary><strong>Entidades</strong></summary>
 
   #### Formato das entidades
 
@@ -47,7 +47,7 @@ Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir c
     | 21  | Latest updates, August 1st | The whole text for the blog post goes here in this key | 14  // Chave estrangeira, referenciando o id de `users`    | 2011-08-01T19:58:00.000Z | 2011-08-01T19:58:51.947Z |
 
 
-  - Tabela **PostCategories**
+  - Tabela **posts_categories**
 
     | post_id | category_id |
     | ------- | ----------- |
@@ -59,7 +59,7 @@ Neste projeto foi desenvolvido um Banco de Dados e uma API REST, para produzir c
 
 **Seu docker-compose precisa estar na versão 1.29 ou superior.**
 
-Rode  o comando `docker-compose up -d --build`.
+Rode o comando `docker-compose up -d --build`.
 
 - Este irá inicializar um container chamado `blogs_api` e outro chamado `blogs_api_db`;
 
@@ -73,23 +73,23 @@ Instale as dependências, dentro do container, com `npm install`.
 
 # Endpoints
 
-- GET ```/user```
-- GET ```/user/:id```
-- GET ```/categories```
-- GET ```/post```
-- GET ```/post/:id```
-- GET ```/post/search?q=:searchTerm```
+- GET `/user`
+- GET `/user/:id`
+- GET `/categories`
+- GET `/post`
+- GET `/post/:id`
+- GET `/post/search?q=:searchTerm`
 
 ---
 
-- POST ```/login```
+- POST `/login`
   ``` JavaScript
     {
       "email": "guesser.vicente@gmail.com",
       "password": "123456"
     }
   ```
-- POST ```/user```
+- POST `/user`
   ``` JavaScript
     {
       "displayName": "Vicente Vendramin",
@@ -98,13 +98,13 @@ Instale as dependências, dentro do container, com `npm install`.
       "image": "https://media.licdn.com/dms/image/D4D35AQEZa1DCWLemaQ/profile-framedphoto-shrink_200_200/0/1680628455542?e=1684796400&v=beta&t=oC2iQRj8AuAj_etoe5mIcFmimj-8KS8miTqmWF4OVFs"
     }
   ```
-- POST ```/categories```
+- POST `/categories`
   ``` JavaScript
     {
       "name": "Typescript"
     }
   ```
-- POST ```/post```
+- POST `/post`
   ``` JavaScript
     {
       "title": "Latest updates, August 1st",
@@ -115,7 +115,7 @@ Instale as dependências, dentro do container, com `npm install`.
 
 ---
 
-- PUT ```/post/:id```
+- PUT `/post/:id`
   ``` JavaScript
     {
       "title": "Latest updates, August 1st",
@@ -125,5 +125,5 @@ Instale as dependências, dentro do container, com `npm install`.
 
 ---
 
-- DELETE ```/user/me```
-- DELETE ```/post/:id```
+- DELETE `/user/me`
+- DELETE `/post/:id`
